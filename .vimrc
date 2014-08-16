@@ -12,7 +12,13 @@ set number
 set shiftwidth=4
 set tabstop=4
 set fileencodings=utf8,cp932
+set laststatus=2
+
 colorscheme jellybeans
+let g:lightline = {
+	\ 'colorscheme': 'jellybeans'
+	\ }
+
 
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,localoptions,tabpages'
 
