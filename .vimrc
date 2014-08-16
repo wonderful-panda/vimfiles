@@ -3,7 +3,6 @@ set guifont=Ricty\ 11
 
 source ~/.vim/settings/bundle.vim
 source ~/.vim/settings/unite.vim
-set backspace indent,eol,start
 nnoremap J <C-d>
 nnoremap K <C-u>
 
@@ -19,12 +18,15 @@ let g:lightline = {
 	\ 'colorscheme': 'jellybeans'
 	\ }
 
-
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,localoptions,tabpages'
 
 imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
+if !exists('g:neocomplete#force_omni_input_patterns')
+	let g:neocomplete#force_omni_input_patterns = {}
+endif
 let g:neocomplete#force_omni_input_patterns.python = 
 	\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
+let g:vimfiler_as_default_explorer = 1
