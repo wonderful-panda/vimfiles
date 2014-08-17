@@ -1,5 +1,5 @@
 set encoding=utf-8
-set guifont=Ricty\ 11
+set guifont=Ricty\ for\ Powerline\ 11
 
 source ~/.vim/settings/bundle.vim
 source ~/.vim/settings/unite.vim
@@ -15,7 +15,9 @@ set laststatus=2
 
 colorscheme jellybeans
 let g:lightline = {
-	\ 'colorscheme': 'jellybeans'
+	\ 'colorscheme': 'jellybeans',
+	\ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+	\ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
 	\ }
 
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,localoptions,tabpages'
