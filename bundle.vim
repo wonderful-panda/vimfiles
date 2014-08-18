@@ -30,7 +30,9 @@ NeoBundle 'itchyny/lightline.vim'
 " その他
 NeoBundle 'tyru/restart.vim'
 NeoBundle 'cohama/agit.vim'
-NeoBundle 'vim-scripts/fcitx.vim'
+if !has('win32')
+	NeoBundle 'vim-scripts/fcitx.vim'
+endif
 
 call neobundle#end()
 

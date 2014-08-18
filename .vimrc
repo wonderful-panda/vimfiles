@@ -1,5 +1,9 @@
 set encoding=utf-8
-set guifont=Ricty\ for\ Powerline\ 11
+if has('win32')
+	set guifont=Ricty_Diminished_for_Powerline:h11:cSHIFTJIS
+else
+	set guifont=Ricty\ for\ Powerline\ 11
+endif
 
 source ~/.vim/settings/bundle.vim
 source ~/.vim/settings/unite.vim
