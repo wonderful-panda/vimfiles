@@ -16,6 +16,7 @@ set shiftwidth=4
 set tabstop=4
 set fileencodings=utf8,cp932
 set laststatus=2
+set backspace=start,eol,indent
 
 colorscheme jellybeans
 let g:lightline = {
