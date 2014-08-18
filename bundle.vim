@@ -38,7 +38,7 @@ NeoBundle 'https://github.com/bps/vim-textobj-python'
 NeoBundle 'tyru/restart.vim'
 NeoBundle 'cohama/agit.vim'
 NeoBundle 'thinca/vim-quickrun.git'
-NeoBundle 'manga-osyo/unite-filters-collection'
+NeoBundle 'osyo-manga/unite-filters-collection'
 if !has('win32')
 	NeoBundle 'vim-scripts/fcitx.vim'
 endif
