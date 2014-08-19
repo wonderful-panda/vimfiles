@@ -7,6 +7,7 @@ endif
 
 source ~/.vim/settings/bundle.vim
 source ~/.vim/settings/unite.vim
+source ~/.vim/settings/filetype.vim
 nnoremap J <C-d>
 nnoremap K <C-u>
 
