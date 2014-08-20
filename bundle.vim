@@ -20,6 +20,7 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 
 " Python関連
+NeoBundle 'vim-scripts/Python-Syntax-Folding'
 NeoBundle 'kevinw/pyflakes-vim'
 NeoBundle 'davidhalter/jedi-vim'
 
