@@ -27,7 +27,12 @@ set list
 set iminsert=0
 set imsearch=-1
 
+" カラースキーマの設定
+let g:jellybeans_overrides = {
+	\ 'Comment' : {'gui': 'none'},
+	\ }
 colorscheme jellybeans
+
 let g:lightline = {
 	\ 'colorscheme': 'jellybeans',
 	\ 'component': {

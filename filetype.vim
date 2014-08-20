@@ -21,7 +21,6 @@ augroup myfiletypesetting
     au FileType ruby setl tabstop=4 expandtab shiftwidth=4
 
     au FileType python setl indentkeys+=0# colorcolumn=80
-    au FileType python highlight Comment gui=None
 
     au FileType xml setl tabstop=2 expandtab shiftwidth=2
 
