@@ -1,5 +1,6 @@
 set encoding=utf-8
 if has('win32')
+	au GUIEnter * simalt ~x
 	set guifont=Ricty_Diminished_for_Powerline:h11:cSHIFTJIS
 else
 	set guifont=Ricty\ for\ Powerline\ 11
@@ -18,6 +19,13 @@ set tabstop=4
 set fileencodings=utf8,cp932
 set laststatus=2
 set backspace=start,eol,indent
+set guioptions=egrLtTb
+set nowrap
+set noswapfile
+set listchars=tab:\ \ 
+set list
+set iminsert=0
+set imsearch=-1
 
 colorscheme jellybeans
 let g:lightline = {
