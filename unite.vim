@@ -9,8 +9,8 @@ function! s:unite_my_settings()
 	inoremap <silent><buffer><expr> <C-h> unite#do_action('left')
 	nnoremap <silent><buffer><expr> <C-j> unite#do_action('below')
 	inoremap <silent><buffer><expr> <C-j> unite#do_action('below')
-	nnoremap <silent><buffer><expr> <C-k> unite#do_action('avobe')
-	inoremap <silent><buffer><expr> <C-k> unite#do_action('avobe')
+	nnoremap <silent><buffer><expr> <C-k> unite#do_action('above')
+	inoremap <silent><buffer><expr> <C-k> unite#do_action('above')
 endfunction
 
 let g:unite_enable_start_insert=1
