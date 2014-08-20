@@ -30,6 +30,9 @@ set imsearch=-1
 colorscheme jellybeans
 let g:lightline = {
 	\ 'colorscheme': 'jellybeans',
+	\ 'component': {
+	\	'readonly': '%{&readonly? "\u2B64" : "" }',
+	\ },
 	\ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
 	\ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
 	\ }
