@@ -1,40 +1,40 @@
 augroup myfiletypedetect
     au!
-    au! BufRead,BufNewFile *.pck    set filetype=plsql
-    au! BufRead,BufNewFile *.sql    setfiletype plsql
-    au! BufRead,BufNewFile *.moin   setfiletype moin
-    au! BufRead,BufNewFile *.wiki   setfiletype moin
-    au! BufRead,BufNewFile *.trac   setfiletype moin
-    au! BufRead,BufNewFile *.go     set filetype=go
+    au BufRead,BufNewFile *.pck    set filetype=plsql
+    au BufRead,BufNewFile *.sql    setfiletype plsql
+    au BufRead,BufNewFile *.moin   setfiletype moin
+    au BufRead,BufNewFile *.wiki   setfiletype moin
+    au BufRead,BufNewFile *.trac   setfiletype moin
+    au BufRead,BufNewFile *.go     set filetype=go
 
-    au! BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec   setfiletype ruby
-    au! BufNewFile,BufRead *.builder,*.rxml,*.rjs       setfiletype ruby
-    au! BufNewFile,BufRead [rR]akefile,*.rake       setfiletype ruby
-    au! BufNewFile,BufRead [rR]antfile,*.rant       setfiletype ruby
-    au! BufNewFile,BufRead *.erb,*.rhtml            setfiletype eruby
+    au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec   setfiletype ruby
+    au BufNewFile,BufRead *.builder,*.rxml,*.rjs       setfiletype ruby
+    au BufNewFile,BufRead [rR]akefile,*.rake       setfiletype ruby
+    au BufNewFile,BufRead [rR]antfile,*.rant       setfiletype ruby
+    au BufNewFile,BufRead *.erb,*.rhtml            setfiletype eruby
 
-    au! BufNewFile,BufRead *.pc setfiletype c
+    au BufNewFile,BufRead *.pc setfiletype c
 augroup END
 
 augroup myfiletypesetting
     au!
-    au! FileType ruby setl tabstop=4 expandtab shiftwidth=4
+    au FileType ruby setl tabstop=4 expandtab shiftwidth=4
 
-    au! FileType python setl indentkeys+=0# colorcolumn=80
-    au! FileType python highlight Comment gui=None
+    au FileType python setl indentkeys+=0# colorcolumn=80
+    au FileType python highlight Comment gui=None
 
-    au! FileType xml setl tabstop=2 expandtab shiftwidth=2
+    au FileType xml setl tabstop=2 expandtab shiftwidth=2
 
-    au! FileType plsql setl autoindent
+    au FileType plsql setl autoindent
                         \   smartindent cinwords=IF,ELSE,LOOP,BEGIN,EXCEPTION
                         \   tabstop=4 shiftwidth=4 softtabstop=4
                         \   foldmethod=syntax
 
-    au! FileType vim setl tabstop=4 shiftwidth=4 softtabstop=4
+    au FileType vim setl tabstop=4 shiftwidth=4 softtabstop=4
 
-    au! FileType go setl tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab 
+    au FileType go setl tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab 
                     \    makeprg=go\ build errorformat=%f:%l:\ %m
-    au! BufWritePre *.go Fmt
+    au BufWritePre *.go Fmt
 
     function! FoldExprForTrac(lnum)
     let l:line = getline(a:lnum)
@@ -45,8 +45,8 @@ augroup myfiletypesetting
         return len(l:matches[1]) == 1 ? "0" : ">" . (len(l:matches[1])-1) 
     endif
     endfunction
-    au! FileType moin setl foldenable foldmethod=expr foldexpr=FoldExprForTrac(v:lnum)
-    au! FileType moin setl tabstop=2 shiftwidth=2 softtabstop=2 expandtab autoindent
+    au FileType moin setl foldenable foldmethod=expr foldexpr=FoldExprForTrac(v:lnum)
+    au FileType moin setl tabstop=2 shiftwidth=2 softtabstop=2 expandtab autoindent
 
     function! FoldExprForDiff(lnum)
     let l:line = getline(a:lnum)
@@ -59,6 +59,6 @@ augroup myfiletypesetting
     endif
     endfunction
 
-    au! FileType diff setl foldenable foldmethod=expr foldexpr=FoldExprForDiff(v:lnum)
+    au FileType diff setl foldenable foldmethod=expr foldexpr=FoldExprForDiff(v:lnum)
 augroup END
 
