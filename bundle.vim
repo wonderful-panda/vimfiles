@@ -26,11 +26,18 @@ NeoBundle 'davidhalter/jedi-vim'
 
 " カラースキーマなど
 NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'https://github.com/altercation/vim-colors-solarized'
+NeoBundle 'https://github.com/w0ng/vim-hybrid'
 NeoBundle 'itchyny/lightline.vim'
+
+" Textobj
+NeoBundle 'https://github.com/kana/vim-textobj-user'
+NeoBundle 'https://github.com/bps/vim-textobj-python'
 
 " その他
 NeoBundle 'tyru/restart.vim'
 NeoBundle 'cohama/agit.vim'
+NeoBundle 'thinca/vim-quickrun.git'
 if !has('win32')
 	NeoBundle 'vim-scripts/fcitx.vim'
 endif

@@ -12,6 +12,8 @@ source ~/.vim/settings/filetype.vim
 nnoremap J <C-d>
 nnoremap K <C-u>
 
+nnoremap  <C-x> :QuickRun<CR>
+
 set hlsearch
 set number
 set shiftwidth=4
