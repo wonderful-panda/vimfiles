@@ -11,6 +11,9 @@ function! s:unite_my_settings()
 	inoremap <silent><buffer><expr> <C-j> unite#do_action('below')
 	nnoremap <silent><buffer><expr> <C-k> unite#do_action('above')
 	inoremap <silent><buffer><expr> <C-k> unite#do_action('above')
+	nnoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+	inoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+	nnoremap <silent><buffer> <Esc> :q<CR>
 endfunction
 
 let g:unite_enable_start_insert=1
