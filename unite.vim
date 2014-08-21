@@ -17,3 +17,26 @@ function! s:unite_my_settings()
 endfunction
 
 let g:unite_enable_start_insert=1
+
+let s:converter = {
+      \ 'name' : '_converter_full_path_addr',
+      \ 'description' : 'converts word and addr to full path of filename',
+      \}
+
+function! s:converter.filter(candidates, context)
+  let candidates = copy(a:candidates)
+
+  for candidate in candidates
+    let path = get(candidate, 'action__path', candidate.word)
+    let candidate.word = unite#util#substitute_path_separator(
+          \ fnamemodify(path, ':p'))
+    let candidate.abbr = candidate.word
+  endfor
+
+  return candidates
+endfunction
+
+call unite#define_filter(s:converter)
+call unite#custom#source('file', 'converters', ['_converter_full_path_addr'])
+
+
