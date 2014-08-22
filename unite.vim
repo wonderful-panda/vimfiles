@@ -24,16 +24,14 @@ let s:converter = {
       \}
 
 function! s:converter.filter(candidates, context)
-  let candidates = copy(a:candidates)
-
-  for candidate in candidates
+  for candidate in a:candidates
     let path = get(candidate, 'action__path', candidate.word)
     let candidate.word = unite#util#substitute_path_separator(
           \ fnamemodify(path, ':p'))
     let candidate.abbr = candidate.word
   endfor
 
-  return candidates
+  return a:candidates
 endfunction
 
 call unite#define_filter(s:converter)
