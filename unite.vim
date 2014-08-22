@@ -39,4 +39,4 @@ endfunction
 call unite#define_filter(s:converter)
 call unite#custom#source('file', 'converters', ['_converter_full_path_addr'])
 
-
+" vim: expandtab shiftwidth=2 tabstop=2 softtabstop=2
