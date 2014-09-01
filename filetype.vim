@@ -59,5 +59,13 @@ augroup myfiletypesetting
     endfunction
 
     au FileType diff setl foldenable foldmethod=expr foldexpr=s:foldexpr_diff(v:lnum)
+
+    function! s:agit_settings()
+        nmap <silent><buffer>x <Plug>(agit-exit)
+		unmap <buffer>q
+    endfunction
+    au FileType agit call s:agit_settings()
+    au FileType agit_stat call s:agit_settings()
+    au FileType agit_diff call s:agit_settings()
 augroup END
 
