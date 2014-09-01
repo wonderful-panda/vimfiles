@@ -50,6 +50,7 @@ let g:syntastic_python_checkers = ['pyflakes']
 let g:syntastic_auto_loc_list = 1
 
 imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:jedi#force_py_version = 3
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 if !exists('g:neocomplete#force_omni_input_patterns')
