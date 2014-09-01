@@ -24,11 +24,9 @@ let s:matcher = {
       \}
 
 function! s:matcher.filter(candidates, context)
-  if a:context.input =~ '\.\./'
-    return unite#filters#matcher_fuzzy#define().filter(a:candidates, a:context)
-  else
-    return unite#filters#matcher_file_name#define().filter(a:candidates, a:context)
-  endif
+  let context = copy(a:context)
+  let context.input = matchstr('/' . a:context.input, '/\zs[^/]*$')
+  return unite#filters#matcher_file_name#define().filter(a:candidates, context)
 endfunction
 
 let s:converter = {
