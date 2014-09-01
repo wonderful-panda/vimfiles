@@ -35,29 +35,29 @@ augroup myfiletypesetting
                     \    makeprg=go\ build errorformat=%f:%l:\ %m
     au BufWritePre *.go Fmt
 
-    function! FoldExprForTrac(lnum)
-    let l:line = getline(a:lnum)
-    let l:matches = matchlist(l:line, '\v^([=]{1,5})\s')
-    if empty(l:matches)
-        return "="
-    else
-        return len(l:matches[1]) == 1 ? "0" : ">" . (len(l:matches[1])-1) 
-    endif
+    function! s:foldexpr_trac(lnum)
+        let l:line = getline(a:lnum)
+        let l:matches = matchlist(l:line, '\v^([=]{1,5})\s')
+        if empty(l:matches)
+            return "="
+        else
+            return len(l:matches[1]) == 1 ? "0" : ">" . (len(l:matches[1])-1) 
+        endif
     endfunction
-    au FileType moin setl foldenable foldmethod=expr foldexpr=FoldExprForTrac(v:lnum)
+    au FileType moin setl foldenable foldmethod=expr foldexpr=s:foldexpr_trac(v:lnum)
     au FileType moin setl tabstop=2 shiftwidth=2 softtabstop=2 expandtab autoindent
 
-    function! FoldExprForDiff(lnum)
-    let l:line = getline(a:lnum)
-    if l:line[0:2] == '==='
-        return ">1"
-    elseif l:line[0:1] == '@@'
-        return ">2"
-    else
-        return "="
-    endif
+    function! s:foldexpr_diff(lnum)
+        let l:line = getline(a:lnum)
+        if l:line[0:2] == '==='
+            return ">1"
+        elseif l:line[0:1] == '@@'
+            return ">2"
+        else
+            return "="
+        endif
     endfunction
 
-    au FileType diff setl foldenable foldmethod=expr foldexpr=FoldExprForDiff(v:lnum)
+    au FileType diff setl foldenable foldmethod=expr foldexpr=s:foldexpr_diff(v:lnum)
 augroup END
 
