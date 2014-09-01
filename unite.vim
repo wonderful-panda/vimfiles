@@ -18,17 +18,6 @@ endfunction
 
 let g:unite_enable_start_insert=1
 
-let s:matcher = {
-      \ 'name' : '_matcher_file_name',
-      \ 'description' : 'match by filename only',
-      \}
-
-function! s:matcher.filter(candidates, context)
-  let context = copy(a:context)
-  let context.input = matchstr('/' . a:context.input, '/\zs[^/]*$')
-  return unite#filters#matcher_file_name#define().filter(a:candidates, context)
-endfunction
-
 let s:converter = {
       \ 'name' : '_converter_full_path_addr',
       \ 'description' : 'converts word and addr to full path of filename',
@@ -45,9 +34,8 @@ function! s:converter.filter(candidates, context)
   return a:candidates
 endfunction
 
-call unite#define_filter(s:matcher)
 call unite#define_filter(s:converter)
-call unite#custom#source('file', 'matchers', ['_matcher_file_name'])
+call unite#custom#source('file', 'matchers', ['matcher_file_name'])
 call unite#custom#source('file', 'converters', ['_converter_full_path_addr'])
 
 " vim: expandtab shiftwidth=2 tabstop=2 softtabstop=2

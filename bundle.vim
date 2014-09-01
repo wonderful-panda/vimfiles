@@ -40,7 +40,7 @@ NeoBundle 'https://github.com/bps/vim-textobj-python'
 NeoBundle 'tyru/restart.vim'
 NeoBundle 'cohama/agit.vim'
 NeoBundle 'thinca/vim-quickrun.git'
-NeoBundle 'osyo-manga/unite-filters-collection'
+NeoBundle 'wonderful-panda/unite-filters-collection', 'matcher_file_name/allow-slashed-input'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'majutsushi/tagbar'
 if !has('win32')
