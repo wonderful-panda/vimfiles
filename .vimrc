@@ -18,13 +18,14 @@ set hlsearch
 set number
 set shiftwidth=4
 set tabstop=4
+set expandtab
 set fileencodings=utf8,cp932
 set laststatus=2
 set backspace=start,eol,indent
 set guioptions=egrLtTb
 set nowrap
 set noswapfile
-set listchars=tab:\ \ 
+set listchars=tab:»\ 
 set list
 set iminsert=0
 set imsearch=-1
