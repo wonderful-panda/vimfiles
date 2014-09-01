@@ -1,9 +1,9 @@
 set encoding=utf-8
 if has('win32')
-	au GUIEnter * simalt ~x
-	set guifont=Ricty_Diminished_for_Powerline:h11:cSHIFTJIS
+    au GUIEnter * simalt ~x
+    set guifont=Ricty_Diminished_for_Powerline:h11:cSHIFTJIS
 else
-	set guifont=Ricty\ for\ Powerline\ 11
+    set guifont=Ricty\ for\ Powerline\ 11
 endif
 
 source ~/.vim/settings/bundle.vim
@@ -32,18 +32,18 @@ set imsearch=-1
 
 " カラースキーマの設定
 let g:jellybeans_overrides = {
-	\ 'Comment' : {'gui': 'none'},
-	\ }
+    \ 'Comment' : {'gui': 'none'},
+    \ }
 colorscheme jellybeans
 
 let g:lightline = {
-	\ 'colorscheme': 'jellybeans',
-	\ 'component': {
-	\	'readonly': '%{&readonly? "\u2B64" : "" }',
-	\ },
-	\ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-	\ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
-	\ }
+    \ 'colorscheme': 'jellybeans',
+    \ 'component': {
+    \   'readonly': '%{&readonly? "\u2B64" : "" }',
+    \ },
+    \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+    \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
+    \ }
 
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,localoptions,tabpages'
 
@@ -55,9 +55,9 @@ let g:jedi#force_py_version = 3
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 if !exists('g:neocomplete#force_omni_input_patterns')
-	let g:neocomplete#force_omni_input_patterns = {}
+    let g:neocomplete#force_omni_input_patterns = {}
 endif
 let g:neocomplete#force_omni_input_patterns.python = 
-	\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+    \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
 let g:vimfiler_as_default_explorer = 1
