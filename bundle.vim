@@ -19,9 +19,11 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 
+" syntastic
+NeoBundle 'scrooloose/syntastic'
+
 " Python関連
 NeoBundle 'vim-scripts/Python-Syntax-Folding'
-NeoBundle 'kevinw/pyflakes-vim'
 NeoBundle 'davidhalter/jedi-vim'
 
 " カラースキーマなど
@@ -39,11 +41,15 @@ NeoBundle 'tyru/restart.vim'
 NeoBundle 'cohama/agit.vim'
 NeoBundle 'thinca/vim-quickrun.git'
 NeoBundle 'osyo-manga/unite-filters-collection'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'majutsushi/tagbar'
 if !has('win32')
 	NeoBundle 'vim-scripts/fcitx.vim'
 endif
 
 call neobundle#end()
+
+:NeoBundleCheck
 
 filetype plugin indent on
 syntax on

@@ -46,6 +46,9 @@ let g:lightline = {
 
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,localoptions,tabpages'
 
+let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_auto_loc_list = 1
+
 imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
