@@ -25,7 +25,7 @@ set expandtab
 set fileencodings=utf8,cp932
 set laststatus=2
 set backspace=start,eol,indent
-set guioptions=egrLtTb
+set guioptions=egrLtb
 set nowrap
 set noswapfile
 set listchars=tab:»\ 
