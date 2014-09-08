@@ -6,6 +6,9 @@ else
     set guifont=Ricty\ for\ Powerline\ 11
 endif
 
+if filereadable(fnamemodify('~/.vim/settings/localenv.vim', ':p'))
+    source ~/.vim/settings/localenv.vim
+endif
 source ~/.vim/settings/bundle.vim
 source ~/.vim/settings/unite.vim
 source ~/.vim/settings/filetype.vim
