@@ -9,6 +9,17 @@ endif
 if filereadable(fnamemodify('~/.vim/settings/localenv.vim', ':p'))
     source ~/.vim/settings/localenv.vim
 endif
+if executable('go') && $GOROOT != ''
+    if !executable('gocode')
+        call system('go get github.com/nsf/gocode')
+        call system($GOPATH . '/src/github.com/nsf/gocode/vim/update.sh')
+    endif
+    if !executable('golint')
+        call system('go get github.com/golang/lint/golint')
+    endif
+    set rtp+=$GOROOT/misc/vim
+    exe 'set rtp+=' . $GOPATH . '/src/github.com/golang/lint/misc/vim'
+endif
 source ~/.vim/settings/bundle.vim
 source ~/.vim/settings/unite.vim
 source ~/.vim/settings/filetype.vim

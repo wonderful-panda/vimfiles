@@ -43,6 +43,7 @@ NeoBundle 'thinca/vim-quickrun.git'
 NeoBundle 'wonderful-panda/unite-filters-collection', 'matcher_file_name/allow-slashed-input'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'Blackrush/vim-gocode'
 if !has('win32')
 	NeoBundle 'vim-scripts/fcitx.vim'
 endif
