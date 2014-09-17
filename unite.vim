@@ -31,24 +31,7 @@ if executable('pt')
   let g:unite_source_grep_encoding = 'utf8'
 endif
 
-let s:converter = {
-      \ 'name' : '_converter_full_path_addr',
-      \ 'description' : 'converts word and addr to full path of filename',
-      \}
-
-function! s:converter.filter(candidates, context)
-  for candidate in a:candidates
-    let path = get(candidate, 'action__path', candidate.word)
-    let candidate.word = unite#util#substitute_path_separator(
-          \ fnamemodify(path, ':p'))
-    let candidate.abbr = candidate.word
-  endfor
-
-  return a:candidates
-endfunction
-
-call unite#define_filter(s:converter)
 call unite#custom#source('file', 'matchers', ['matcher_file_name'])
-call unite#custom#source('file', 'converters', ['_converter_full_path_addr'])
+call unite#custom#source('file', 'converters', ['converter_file_directory'])
 
 " vim: expandtab shiftwidth=2 tabstop=2 softtabstop=2
