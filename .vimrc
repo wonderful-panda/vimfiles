@@ -1,4 +1,6 @@
-set encoding=utf-8
+if has('gui')
+    set encoding=utf-8
+endif
 if has('win32')
     au GUIEnter * simalt ~x
     set guifont=Ricty_Diminished_for_Powerline:h11:cSHIFTJIS
@@ -39,25 +41,30 @@ set backspace=start,eol,indent
 set guioptions=egrLtb
 set nowrap
 set noswapfile
-set listchars=tab:»\ 
-set list
 set iminsert=0
 set imsearch=-1
 
-" カラースキーマの設定
-let g:jellybeans_overrides = {
-    \ 'Comment' : {'gui': 'none'},
-    \ }
-colorscheme jellybeans
+if has('gui')
+    " gvim専用の設定
+    set listchars=tab:»\ 
+    set list
 
-let g:lightline = {
-    \ 'colorscheme': 'jellybeans',
-    \ 'component': {
-    \   'readonly': '%{&readonly? "\u2B64" : "" }',
-    \ },
-    \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-    \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
-    \ }
+    let g:jellybeans_overrides = {
+        \ 'Comment' : {'gui': 'none'},
+        \ }
+    colorscheme jellybeans
+
+    let g:lightline = {
+        \ 'colorscheme': 'jellybeans',
+        \ 'component': {
+        \   'readonly': '%{&readonly? "\u2B64" : "" }',
+        \ },
+        \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+        \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
+        \ }
+else
+    colorscheme industry
+endif
 
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,localoptions,tabpages'
 

@@ -26,15 +26,9 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'vim-scripts/Python-Syntax-Folding'
 NeoBundle 'davidhalter/jedi-vim'
 
-" カラースキーマなど
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'itchyny/lightline.vim'
-
 " Textobj
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'bps/vim-textobj-python'
+"NeoBundle 'kana/vim-textobj-user'
+"NeoBundle 'bps/vim-textobj-python'
 
 " その他
 NeoBundle 'tyru/restart.vim'
@@ -46,6 +40,14 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'Blackrush/vim-gocode'
 if !has('win32')
 	NeoBundle 'vim-scripts/fcitx.vim'
+endif
+
+if has('gui')
+    " gvim専用
+    NeoBundle 'itchyny/lightline.vim'
+    NeoBundle 'altercation/vim-colors-solarized'
+    NeoBundle 'w0ng/vim-hybrid'
+    NeoBundle 'nanotech/jellybeans.vim'
 endif
 
 call neobundle#end()
