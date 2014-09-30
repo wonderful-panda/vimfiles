@@ -34,4 +34,18 @@ endif
 call unite#custom#source('file', 'matchers', ['matcher_file_name'])
 call unite#custom#source('file', 'converters', ['converter_file_directory'])
 
+let open_agit = {
+      \ 'description' : 'open directory by agit',
+      \ 'is_selectable' : 1,
+      \ }
+
+function open_agit.func(candidates)
+  for candidate in a:candidates
+    exec 'Agit --dir=' . candidate.action__path
+  endfor
+endfunction
+
+call unite#custom_action('directory', 'open-agit', open_agit)
+unlet open_agit
+
 " vim: expandtab shiftwidth=2 tabstop=2 softtabstop=2
