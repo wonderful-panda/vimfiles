@@ -84,3 +84,11 @@ let g:neocomplete#force_omni_input_patterns.python =
     \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
 let g:vimfiler_as_default_explorer = 1
+
+command! MessCopy call s:messcopy()
+function! s:messcopy()
+    redir @+>
+    silent messages
+    redir END
+endfunction
+
