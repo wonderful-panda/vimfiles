@@ -33,6 +33,7 @@ NeoBundle 'davidhalter/jedi-vim'
 " その他
 NeoBundle 'tyru/restart.vim'
 NeoBundle 'cohama/agit.vim'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-quickrun.git'
 NeoBundle 'osyo-manga/unite-filters-collection'
 NeoBundle 'Lokaltog/vim-easymotion'
