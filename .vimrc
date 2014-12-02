@@ -43,7 +43,7 @@ set nowrap
 set noswapfile
 set iminsert=0
 set imsearch=-1
-set ambiwidth=double
+set ambiwidth=auto
 
 if has('gui')
     " gvim専用の設定
