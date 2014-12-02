@@ -44,6 +44,7 @@ set noswapfile
 set iminsert=0
 set imsearch=-1
 set ambiwidth=auto
+set shellslash
 
 if has('gui')
     " gvim専用の設定
