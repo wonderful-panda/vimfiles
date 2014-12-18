@@ -1,11 +1,11 @@
 augroup myfiletypedetect
     au!
-    au BufRead,BufNewFile *.pck    set filetype=plsql
+    au BufRead,BufNewFile *.pck    setfiletype plsql
     au BufRead,BufNewFile *.sql    setfiletype plsql
     au BufRead,BufNewFile *.moin   setfiletype moin
     au BufRead,BufNewFile *.wiki   setfiletype moin
     au BufRead,BufNewFile *.trac   setfiletype moin
-    au BufRead,BufNewFile *.go     set filetype=go
+    au BufRead,BufNewFile *.go     setfiletype go
 
     au BufNewFile,BufRead *.rb,*.rbw,*.gem,*.gemspec   setfiletype ruby
     au BufNewFile,BufRead *.builder,*.rxml,*.rjs       setfiletype ruby
