@@ -45,6 +45,7 @@ set iminsert=0
 set imsearch=-1
 set ambiwidth=auto
 set shellslash
+set cursorline
 
 if has('gui')
     " gvim専用の設定
@@ -55,6 +56,7 @@ if has('gui')
         \ 'Comment' : {'gui': 'none'},
         \ }
     colorscheme jellybeans
+    hi CursorLine gui=underline guifg=NONE guibg=NONE
 
     let g:lightline = {
         \ 'colorscheme': 'jellybeans',
@@ -66,6 +68,7 @@ if has('gui')
         \ }
 else
     colorscheme industry
+    hi CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 endif
 
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,localoptions,tabpages'
