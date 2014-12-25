@@ -20,11 +20,29 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 
 " syntastic
-NeoBundle 'scrooloose/syntastic'
+NeoBundleLazy 'scrooloose/syntastic', {
+\   'autoload' : { 'filetypes' : [ 'python', 'ruby', 'vim', 'go' ] }
+\ }
+let s:bundle = neobundle#get('syntastic')
+function! s:bundle.hooks.on_source(bundle)
+  let g:syntastic_python_checkers = ['pyflakes']
+  let g:syntastic_auto_loc_list = 1
+endfunction
 
 " Python関連
-NeoBundle 'vim-scripts/Python-Syntax-Folding'
-NeoBundle 'davidhalter/jedi-vim'
+NeoBundleLazy 'vim-scripts/Python-Syntax-Folding', {
+\   'autoload' : { 'filetypes' : [ 'python' ] }
+\ }
+
+NeoBundleLazy 'davidhalter/jedi-vim', {
+\   'autoload' : { 'filetypes' : [ 'python' ] }
+\ }
+let s:bundle = neobundle#get('jedi-vim')
+function! s:bundle.hooks.on_source(bundle)
+  let g:jedi#force_py_version = 3
+  let g:jedi#completions_enabled = 0
+  let g:jedi#auto_vim_configuration = 0
+endfunction
 
 " Textobj
 "NeoBundle 'kana/vim-textobj-user'
@@ -32,13 +50,21 @@ NeoBundle 'davidhalter/jedi-vim'
 
 " その他
 NeoBundle 'tyru/restart.vim'
-NeoBundle 'wonderful-panda/agit.vim', 'sandbox'
+NeoBundleLazy 'wonderful-panda/agit.vim', 'sandbox', {
+\   'autoload' : { 'commands' : [ 'Agit', 'AgitFile' ] }
+\ }
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-quickrun.git'
 NeoBundle 'osyo-manga/unite-filters-collection'
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'Blackrush/vim-gocode'
+NeoBundleLazy 'majutsushi/tagbar', {
+\   'autoload' : { 'commands' : [ 'Tagbar', 'TagbarOpen', 'TagbarToggle' ] }
+\ }
+
+NeoBundleLazy 'Blackrush/vim-gocode', {
+\   'autoload' : { 'filetypes' : [ 'go' ] }
+\ }
+
 if !has('win32')
 	NeoBundle 'vim-scripts/fcitx.vim'
 endif
