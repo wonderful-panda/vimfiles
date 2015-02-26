@@ -50,7 +50,7 @@ endfunction
 
 " その他
 NeoBundle 'tyru/restart.vim'
-NeoBundleLazy 'wonderful-panda/agit.vim', 'sandbox', {
+NeoBundleLazy 'cohama/agit.vim', {
 \   'autoload' : { 'commands' : [ 'Agit', 'AgitFile' ] }
 \ }
 NeoBundle 'tpope/vim-fugitive'
