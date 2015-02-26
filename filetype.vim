@@ -61,19 +61,12 @@ augroup myfiletypesetting
     au FileType diff setl foldenable foldmethod=expr foldexpr=s:foldexpr_diff(v:lnum)
 
     function! s:agit_settings()
-        if &filetype =~? "^agit"
-            if !exists('b:_agitexit_replaced')
-                let b:_agitexit_replaced = 1
-                nmap <silent><buffer>x <Plug>(agit-exit)
-                unmap <buffer>q
-            endif
-            if exists('t:git') && !exists('b:_curdir_changed')
-                let b:_curdir_changed = 1
-                execute 'lcd ' . t:git.git_dir . '/..'
-            endif
-        endif
+        nmap <silent><buffer>x <Plug>(agit-exit)
+        unmap <buffer>q
     endfunction
-    au BufEnter *Agit* call s:agit_settings()
+    au FileType agit call s:agit_settings()
+    au FileType agit_stat call s:agit_settings()
+    au FileType agit_diff call s:agit_settings()
 
     au FileType help nnoremap <buffer><Esc> :q<CR> 
 augroup END
