@@ -89,6 +89,18 @@ function! s:messcopy()
     redir END
 endfunction
 
+if executable('jq')
+    command! -nargs=? Jq call s:Jq(<f-args>)
+    function! s:Jq(...)
+        if 0 == a:0
+            let l:arg = "."
+        else
+            let l:arg = a:1
+        endif
+        execute '%! jq "' . l:arg . '"'
+    endfunction
+endif
+
 " easymotion
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
