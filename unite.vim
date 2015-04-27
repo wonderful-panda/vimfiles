@@ -33,6 +33,7 @@ endif
 
 call unite#custom#source('file', 'matchers', ['matcher_file_name'])
 call unite#custom#source('file', 'converters', ['converter_file_directory'])
+call unite#custom#profile('default', 'context', {'prompt': '> '})
 
 let open_agit = {
       \ 'description' : 'open directory by agit',
