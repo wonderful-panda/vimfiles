@@ -41,11 +41,13 @@ set backspace=start,eol,indent
 set guioptions=egrLtb
 set nowrap
 set noswapfile
+set nobackup
 set iminsert=0
 set imsearch=-1
 set ambiwidth=auto
 set shellslash
 set cursorline
+set cmdheight=1
 
 if has('gui')
     " gvim専用の設定
