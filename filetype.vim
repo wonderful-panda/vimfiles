@@ -29,7 +29,7 @@ augroup myfiletypesetting
                         \   tabstop=4 shiftwidth=4 softtabstop=4
                         \   foldmethod=syntax
 
-    au FileType vim setl tabstop=4 shiftwidth=4 softtabstop=4
+    au FileType vim setl tabstop=2 shiftwidth=2 softtabstop=2
 
     au FileType go setl tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab 
                     \    makeprg=go\ build errorformat=%f:%l:\ %m
