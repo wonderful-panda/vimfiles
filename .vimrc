@@ -3,9 +3,9 @@ if has('gui')
 endif
 if has('win32')
     au GUIEnter * simalt ~x
-    set guifont=Ricty_Diminished_for_Powerline:h11:cSHIFTJIS
+    set guifont=Inconsolata_for_Powerline:h11
 else
-    set guifont=Ricty\ for\ Powerline\ 11
+    set guifont=Inconsolata\ for\ Powerline\ 11
 endif
 
 if filereadable(fnamemodify('~/.vim/settings/localenv.vim', ':p'))
