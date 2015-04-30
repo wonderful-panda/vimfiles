@@ -62,8 +62,16 @@ if has('gui')
 
     let g:lightline = {
         \ 'colorscheme': 'jellybeans',
+        \ 'active': {
+        \   'left': [['mode', 'paste'], ['readonly', 'filename', 'modified', 'fugitive']]
+        \ },
         \ 'component': {
-        \   'readonly': '%{&readonly? "\u2B64" : "" }',
+        \   'readonly': '%{&readonly ? "\u2B64" : ""}',
+        \   'fugitive': '%{exists("*fugitive#head") && fugitive#head() != "" ? "\u2B60 " . fugitive#head() : ""}',
+        \ },
+        \ 'component_visible_condition': {
+        \   'readonly': '(&readonly)',
+        \   'fugitive': '(exists("*fugitive#head") && fugitive#head() != "")',
         \ },
         \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
         \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
