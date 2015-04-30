@@ -72,8 +72,6 @@ endif
 if has('gui')
     " gvim専用
     NeoBundle 'itchyny/lightline.vim'
-    NeoBundle 'altercation/vim-colors-solarized'
-    NeoBundle 'w0ng/vim-hybrid'
     NeoBundle 'nanotech/jellybeans.vim'
 endif
 
