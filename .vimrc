@@ -48,6 +48,10 @@ set ambiwidth=auto
 set shellslash
 set cursorline
 set cmdheight=1
+set undodir=~/.vim/undo
+if !isdirectory(&undodir)
+  call mkdir(&undodir)
+endif
 
 if has('gui')
     " gvim専用の設定

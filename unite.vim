@@ -1,5 +1,5 @@
 nnoremap <silent> ;b :Unite file_mru<CR>
-nnoremap <silent> ;f :UniteWithBufferDir file<CR>
+nnoremap <silent> ;f :UniteWithBufferDir file file/new<CR>
 nnoremap <silent> ;gc :<C-u>Unite grep:. -no-quit -keep-focus -buffer-name=search-buffer<CR>
 nnoremap <silent> ;gb :<C-u>execute ':Unite grep:' . 
                                   \ escape(unite#util#substitute_path_separator(expand('%:p:h')), ': ') .
