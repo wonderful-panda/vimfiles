@@ -1,9 +1,21 @@
 nnoremap <silent> ;b :Unite file_mru<CR>
-nnoremap <silent> ;f :UniteWithBufferDir file file/new<CR>
-nnoremap <silent> ;gc :<C-u>Unite grep:. -no-quit -keep-focus -buffer-name=search-buffer<CR>
-nnoremap <silent> ;gb :<C-u>execute ':Unite grep:' . 
-                                  \ escape(unite#util#substitute_path_separator(expand('%:p:h')), ': ') .
-                                  \ ' -no-quit -keep-focus -buffer-name=search-buffer'<CR>
+nnoremap <silent> ;f :UniteWithBufferDir file file/new directory/new<CR>
+nnoremap <expr> ;gc BuildGrepCommandLine('.')
+nnoremap <expr> ;gb BuildGrepCommandLine('%:h')
+
+function! BuildGrepCommandLine(dir) abort
+  let dir = expand(a:dir)
+  let target = unite#util#input('Target: ', dir . '/**/*.', '')
+  if empty(target)
+    return ''
+  endif
+  let keyword = unite#util#input('Keyword: ', '', '')
+  if empty(keyword)
+    return ''
+  endif
+  let cmdline = ':Unite grep:' . target . '::' . keyword . ' -no-quit -buffer-name=search-buffer' . "\n"
+  return cmdline
+endfunction
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
@@ -24,9 +36,17 @@ endfunction
 
 let g:unite_enable_start_insert=1
 
-if executable('pt')
-  let g:unite_source_grep_command = 'pt'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+if executable('jvgrep')
+  let g:unite_source_grep_command = 'jvgrep'
+  let s:exclude_exts = [
+        \ 'exe', 'dll', 'lib', 'ocx', 'pdb', 'pch', 'ilk', 'obj',
+        \ 'ncb', 'bak', 'swp', 'jar', 'tlb', 'pyo', 'pyc', 'pyd',
+        \ 'xls', 'doc', 'ppt', 'pdf', 'bmp', 'png', 'jpg', 'zip',
+        \ 'cache', 'resources', 'class', 'nupkg',
+        \ ]
+  let g:unite_source_grep_default_opts = '-r8 ' . 
+        \ '--exclude "(?i:/(\.git|\.hg|\.svn|\.bzr|bin|obj)$|(Debug|Release)$|\.(' . join(s:exclude_exts, '|') . ')$|/~)"'
+  unlet s:exclude_exts
   let g:unite_source_grep_recursive_opt = ''
   let g:unite_source_grep_encoding = 'utf8'
 endif

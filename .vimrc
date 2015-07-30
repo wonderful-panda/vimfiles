@@ -21,6 +21,9 @@ if executable('go') && $GOROOT != ''
     endif
     set rtp+=$GOROOT/misc/vim
     exe 'set rtp+=' . $GOPATH . '/src/github.com/golang/lint/misc/vim'
+    if !executable('jvgrep')
+        call system('go get github.com/mattn/jvgrep')
+    endif
 endif
 source ~/.vim/settings/bundle.vim
 source ~/.vim/settings/unite.vim
