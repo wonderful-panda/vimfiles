@@ -75,6 +75,9 @@ if has('gui')
     NeoBundle 'nanotech/jellybeans.vim'
 endif
 
+NeoBundle 'vim-jp/vital.vim'
+NeoBundle 'wonderful-panda/desertfox.vim'
+
 call neobundle#end()
 
 :NeoBundleCheck

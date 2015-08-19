@@ -4,12 +4,13 @@ nnoremap <expr> ;gc BuildGrepCommandLine('.')
 nnoremap <expr> ;gb BuildGrepCommandLine('%:h')
 
 function! BuildGrepCommandLine(dir) abort
+  call neobundle#source(['unite.vim'])
   let dir = expand(a:dir)
-  let target = unite#util#input('Target: ', dir . '/**/*.', '')
+  let target = input('Target: ', dir . '/**/*.')
   if empty(target)
     return ''
   endif
-  let keyword = unite#util#input('Keyword: ', '', '')
+  let keyword = input('Keyword: ')
   if empty(keyword)
     return ''
   endif
@@ -33,6 +34,36 @@ function! s:unite_my_settings()
   inoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
   nnoremap <silent><buffer> <Esc> :q<CR>
 endfunction
+
+function! s:buffer_window(bufname) abort
+  let bufnr = bufnr(a:bufname)
+  if bufnr < 0
+    return -1
+  endif
+  for w in range(1, winnr('$'))
+    if winbufnr(w) == bufnr
+      return w
+    endif
+  endfor
+  return -1
+endfunction
+
+function! UniteGrepMove(direction) abort
+  let winnr = s:buffer_window('search-buffer')
+  if winnr < 0
+    return
+  endif
+  exec winnr . 'wincmd w'
+  if a:direction == 1
+    exec "normal \<Plug>(unite_loop_cursor_down)"
+  else
+    exec "normal \<Plug>(unite_loop_cursor_up)"
+  endif
+  exec "normal \<Plug>(unite_do_default_action)"
+endfunction
+
+nnoremap ;n :call UniteGrepMove(1)<CR>
+nnoremap ;p :call UniteGrepMove(2)<CR>
 
 let g:unite_enable_start_insert=1
 
