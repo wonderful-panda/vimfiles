@@ -44,9 +44,25 @@ function! s:bundle.hooks.on_source(bundle)
   let g:jedi#auto_vim_configuration = 0
 endfunction
 
-" Textobj
-"NeoBundle 'kana/vim-textobj-user'
-"NeoBundle 'bps/vim-textobj-python'
+" html/javascript関連
+NeoBundle 'othree/html5.vim'
+
+NeoBundleLazy 'mattn/emmet-vim', {
+\   'autoload' : { 'filetypes' : [ 'html' ] }
+\ }
+
+NeoBundleLazy 'leafgarland/typescript-vim', {
+\ 'autoload' : {
+\   'filetypes' : ['typescript'] }
+\}
+
+NeoBundle 'jason0x43/vim-js-indent'
+let g:js_indent_typescript = 1
+
+NeoBundleLazy 'Quramy/tsuquyomi', {
+\ 'autoload' : {
+\   'filetypes' : ['typescript'] }
+\}
 
 " その他
 NeoBundle 'tyru/restart.vim'
@@ -65,6 +81,8 @@ NeoBundleLazy 'Blackrush/vim-gocode', {
 \   'autoload' : { 'filetypes' : [ 'go' ] }
 \ }
 
+NeoBundle 'editorconfig/editorconfig-vim'
+
 if !has('win32')
 	NeoBundle 'vim-scripts/fcitx.vim'
 endif
@@ -80,8 +98,8 @@ NeoBundle 'wonderful-panda/desertfox.vim'
 
 call neobundle#end()
 
-:NeoBundleCheck
-
 filetype plugin indent on
 syntax on
+
+:NeoBundleCheck
 

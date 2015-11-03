@@ -69,5 +69,7 @@ augroup myfiletypesetting
     au FileType agit_diff call s:agit_settings()
 
     au FileType help nnoremap <buffer><Esc> :q<CR> 
+
+    au FileType typescript setl omnifunc=TSScompleteFunc
 augroup END
 
