@@ -77,9 +77,7 @@ NeoBundleLazy 'majutsushi/tagbar', {
 \   'autoload' : { 'commands' : [ 'Tagbar', 'TagbarOpen', 'TagbarToggle' ] }
 \ }
 
-NeoBundleLazy 'Blackrush/vim-gocode', {
-\   'autoload' : { 'filetypes' : [ 'go' ] }
-\ }
+NeoBundle 'Blackrush/vim-gocode'
 
 NeoBundle 'editorconfig/editorconfig-vim'
 

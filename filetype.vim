@@ -2,8 +2,6 @@ augroup myfiletypedetect
     au!
     au BufRead,BufNewFile *.pck    setfiletype plsql
     au BufRead,BufNewFile *.sql    setfiletype plsql
-    au BufRead,BufNewFile *.moin   setfiletype moin
-    au BufRead,BufNewFile *.wiki   setfiletype moin
     au BufRead,BufNewFile *.trac   setfiletype moin
     au BufRead,BufNewFile *.go     setfiletype go
 
@@ -18,21 +16,14 @@ augroup END
 
 augroup myfiletypesetting
     au!
-    au FileType ruby setl tabstop=4 expandtab shiftwidth=4
 
     au FileType python setl indentkeys+=0# colorcolumn=80
 
-    au FileType xml setl tabstop=2 expandtab shiftwidth=2
-
     au FileType plsql setl autoindent
                         \   smartindent cinwords=IF,ELSE,LOOP,BEGIN,EXCEPTION
-                        \   tabstop=4 shiftwidth=4 softtabstop=4
                         \   foldmethod=syntax
 
-    au FileType vim setl tabstop=2 shiftwidth=2 softtabstop=2
-
-    au FileType go setl tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab 
-                    \    makeprg=go\ build errorformat=%f:%l:\ %m
+    au FileType go setl makeprg=go\ build errorformat=%f:%l:\ %m
     au BufWritePre *.go Fmt
 
     function! s:foldexpr_trac(lnum)

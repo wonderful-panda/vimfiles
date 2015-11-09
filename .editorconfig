@@ -1,0 +1,16 @@
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+
+[*.{xml,html,vim}]
+indent_size = 2
+
+[_vimrc,.vimrc]
+indent_size = 2
+
+[*.go]
+indent_style = tab
+
