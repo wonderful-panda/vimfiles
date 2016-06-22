@@ -63,9 +63,6 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
 NeoBundleLazy 'othree/yajs.vim', {
 \   'autoload' : { 'filetypes' : [ 'javascript' ] }
 \}
-NeoBundleLazy 'jason0x43/vim-js-indent', {
-\   'autoload' : { 'filetypes' : [ 'javascript' ] }
-\}
 
 let g:js_indent_typescript = 1
 
@@ -85,14 +82,11 @@ NeoBundleLazy 'cohama/agit.vim', {
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-quickrun.git'
 NeoBundle 'osyo-manga/unite-filters-collection'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundleLazy 'majutsushi/tagbar', {
-\   'autoload' : { 'commands' : [ 'Tagbar', 'TagbarOpen', 'TagbarToggle' ] }
-\ }
 
 NeoBundle 'Blackrush/vim-gocode'
 
 NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'cohama/lexima.vim'
 
 if !has('win32')
 	NeoBundle 'vim-scripts/fcitx.vim'
@@ -102,7 +96,6 @@ if has('gui')
     " gvim専用
     NeoBundle 'itchyny/lightline.vim'
     NeoBundle 'nanotech/jellybeans.vim'
-    NeoBundle 'croaker/mustang-vim'
 endif
 
 NeoBundle 'vim-jp/vital.vim'
