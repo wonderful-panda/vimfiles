@@ -64,10 +64,8 @@ if has('gui')
     set listchars=tab:»\ 
     set list
 
-    let g:jellybeans_overrides = {
-        \ 'Comment' : {'gui': 'none'},
-        \ }
     colorscheme jellybeans
+    hi Comment gui=NONE
     hi CursorLine gui=underline guifg=NONE guibg=NONE
 
     let g:lightline = {
