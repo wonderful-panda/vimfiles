@@ -57,6 +57,7 @@ set undodir=~/.vim/undo
 if !isdirectory(&undodir)
   call mkdir(&undodir)
 endif
+set backupcopy=yes
 
 if has('gui')
     " gvim専用の設定
