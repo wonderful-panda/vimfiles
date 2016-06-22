@@ -18,15 +18,21 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'Shougo/context_filetype.vim'
+
+NeoBundle 'osyo-manga/vim-precious'
 
 " syntastic
 NeoBundleLazy 'scrooloose/syntastic', {
-\   'autoload' : { 'filetypes' : [ 'python', 'ruby', 'vim', 'go' ] }
+\   'autoload' : { 'filetypes' : [ 'python', 'ruby', 'vim', 'go', 'javascript', 'html' ] }
 \ }
 let s:bundle = neobundle#get('syntastic')
 function! s:bundle.hooks.on_source(bundle)
   let g:syntastic_python_checkers = ['pyflakes']
+  let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 0
+  let g:syntastic_check_on_wq = 0
 endfunction
 
 " Python関連
@@ -46,22 +52,29 @@ endfunction
 
 " html/javascript関連
 NeoBundle 'othree/html5.vim'
-
 NeoBundleLazy 'mattn/emmet-vim', {
 \   'autoload' : { 'filetypes' : [ 'html' ] }
-\ }
+\}
+
+NeoBundleLazy 'marijnh/tern_for_vim', {
+\ 'autoload' : { 'filetypes' : ['javascript'] },
+\ 'build': { 'others': 'npm install' }
+\}
+NeoBundleLazy 'othree/yajs.vim', {
+\   'autoload' : { 'filetypes' : [ 'javascript' ] }
+\}
+NeoBundleLazy 'jason0x43/vim-js-indent', {
+\   'autoload' : { 'filetypes' : [ 'javascript' ] }
+\}
+
+let g:js_indent_typescript = 1
 
 NeoBundleLazy 'leafgarland/typescript-vim', {
 \ 'autoload' : {
 \   'filetypes' : ['typescript'] }
 \}
-
-NeoBundle 'jason0x43/vim-js-indent'
-let g:js_indent_typescript = 1
-
 NeoBundleLazy 'Quramy/tsuquyomi', {
-\ 'autoload' : {
-\   'filetypes' : ['typescript'] }
+\ 'autoload' : { 'filetypes' : ['typescript'] }
 \}
 
 " その他
@@ -89,6 +102,7 @@ if has('gui')
     " gvim専用
     NeoBundle 'itchyny/lightline.vim'
     NeoBundle 'nanotech/jellybeans.vim'
+    NeoBundle 'croaker/mustang-vim'
 endif
 
 NeoBundle 'vim-jp/vital.vim'
