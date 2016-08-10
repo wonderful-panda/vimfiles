@@ -21,12 +21,13 @@ NeoBundle 'Shougo/vimfiler.vim'
 
 " syntastic
 NeoBundleLazy 'scrooloose/syntastic', {
-\   'autoload' : { 'filetypes' : [ 'python', 'ruby', 'vim', 'go', 'javascript', 'html' ] }
+\   'autoload' : { 'filetypes' : [ 'python', 'ruby', 'vim', 'go', 'javascript', 'typescript', 'html' ] }
 \ }
 let s:bundle = neobundle#get('syntastic')
 function! s:bundle.hooks.on_source(bundle)
   let g:syntastic_python_checkers = ['pyflakes']
   let g:syntastic_javascript_checkers = ['eslint']
+  let g:syntastic_typescript_checkers = ['tslint', 'tsuquyomi']
   let g:syntastic_auto_loc_list = 1
   let g:syntastic_check_on_open = 0
   let g:syntastic_check_on_wq = 0

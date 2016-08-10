@@ -33,6 +33,8 @@ nnoremap K <C-u>
 
 nnoremap  <C-x> :QuickRun<CR>
 
+inoremap <C-Space> <C-x><C-o>
+
 set hlsearch
 set number
 set shiftwidth=4
