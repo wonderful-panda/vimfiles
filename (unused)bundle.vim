@@ -1,4 +1,7 @@
-
+"
+" neobundle.vimからdein.vimに移行したためもう必要ない
+" そのうち消す
+" 
 set runtimepath+=~/.vim/bundle/neobundle.vim
 call neobundle#begin(expand('~/.vim/bundle/'))
 

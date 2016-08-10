@@ -25,9 +25,10 @@ if executable('go') && $GOROOT != ''
         call system('go get github.com/mattn/jvgrep')
     endif
 endif
-source ~/.vim/settings/bundle.vim
+source ~/.vim/settings/dein.vim
 source ~/.vim/settings/unite.vim
 source ~/.vim/settings/filetype.vim
+
 nnoremap J <C-d>
 nnoremap K <C-u>
 
