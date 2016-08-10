@@ -1,5 +1,6 @@
 nnoremap <silent> ;b :Unite file_mru<CR>
 nnoremap <silent> ;f :UniteWithBufferDir file file/new directory/new<CR>
+nnoremap <silent> ;c :UniteWithCurrentDir file file/new directory/new<CR>
 nnoremap <expr> ;gc BuildGrepCommandLine('.')
 nnoremap <expr> ;gb BuildGrepCommandLine('%:h')
 
