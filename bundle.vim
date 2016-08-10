@@ -18,9 +18,6 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'Shougo/context_filetype.vim'
-
-NeoBundle 'osyo-manga/vim-precious'
 
 " syntastic
 NeoBundleLazy 'scrooloose/syntastic', {
