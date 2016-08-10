@@ -95,3 +95,5 @@ hook_add = '''
 repo = 'nanotech/jellybeans.vim'
 if = '''has('gui')'''
 
+[[plugins]]
+repo = 'cespare/vim-toml'
