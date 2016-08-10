@@ -5,7 +5,6 @@ nnoremap <expr> ;gc BuildGrepCommandLine('.')
 nnoremap <expr> ;gb BuildGrepCommandLine('%:h')
 
 function! BuildGrepCommandLine(dir) abort
-  call neobundle#source(['unite.vim'])
   let dir = expand(a:dir)
   let target = input('Target: ', dir . '/**/*.')
   if empty(target)
