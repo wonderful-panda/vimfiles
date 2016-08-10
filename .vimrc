@@ -1,7 +1,7 @@
 if has('gui')
     set encoding=utf-8
 endif
-if has('win32')
+if has('win32') && has('gui')
     au GUIEnter * simalt ~x
     set guifont=Envy_Code_R_for_Powerline:h10:cANSI
 else
@@ -49,7 +49,6 @@ set noswapfile
 set nobackup
 set iminsert=0
 set imsearch=-1
-set ambiwidth=auto
 set shellslash
 set cursorline
 set cmdheight=1
@@ -63,6 +62,7 @@ set backupcopy=yes
 
 if has('gui')
     " gvim専用の設定
+    set ambiwidth=auto
     set listchars=tab:»\ 
     set list
 
