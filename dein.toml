@@ -49,6 +49,13 @@ repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
+hook_add = '''
+    let g:precious_enable_switchers = {
+    \   "*" : { "setfiletype" : 0 },
+    \   "toml" : { "setfiletype" : 1 },
+    \   "html" : { "setfiletype" : 1 }
+    \}
+'''
 
 [[plugins]]
 repo = 'tyru/restart.vim'
