@@ -62,7 +62,6 @@ augroup myfiletypesetting
 
     au FileType help nnoremap <buffer><Esc> :q<CR> 
 
-    au FileType typescript setl omnifunc=TSScompleteFunc
     au FileType javascript setl omnifunc=tern#Complete
 augroup END
 
