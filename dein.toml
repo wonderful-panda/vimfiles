@@ -45,6 +45,12 @@ on_source = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+
+[[plugins]]
 repo = 'tyru/restart.vim'
 
 [[plugins]]
