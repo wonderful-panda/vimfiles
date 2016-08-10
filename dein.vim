@@ -8,11 +8,13 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . s:dein_repo_dir
 endif
 
+let s:toml = '~/.vim/settings/dein.toml'
+let s:toml_lazy = '~/.vim/settings/dein_lazy.toml'
 if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
+  call dein#begin(s:dein_dir, [s:toml, s:toml_lazy])
 
-  call dein#load_toml('~/.vim/settings/dein.toml', {'lazy': 0})
-  call dein#load_toml('~/.vim/settings/dein_lazy.toml', {'lazy': 1})
+  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:toml_lazy, {'lazy': 1})
 
   call dein#end()
   call dein#save_state()
