@@ -26,7 +26,6 @@ if executable('go') && $GOROOT != ''
     endif
 endif
 source ~/.vim/settings/dein.vim
-source ~/.vim/settings/unite.vim
 source ~/.vim/settings/filetype.vim
 
 nnoremap J <C-d>
@@ -71,22 +70,6 @@ if has('gui')
     hi Comment gui=NONE
     hi CursorLine gui=underline guifg=NONE guibg=NONE
 
-    let g:lightline = {
-        \ 'colorscheme': 'jellybeans',
-        \ 'active': {
-        \   'left': [['mode', 'paste'], ['readonly', 'filename', 'modified', 'fugitive']]
-        \ },
-        \ 'component': {
-        \   'readonly': '%{&readonly ? "\u2B64" : ""}',
-        \   'fugitive': '%{exists("*fugitive#head") && fugitive#head() != "" ? "\u2B60 " . fugitive#head() : ""}',
-        \ },
-        \ 'component_visible_condition': {
-        \   'readonly': '(&readonly)',
-        \   'fugitive': '(exists("*fugitive#head") && fugitive#head() != "")',
-        \ },
-        \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-        \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
-        \ }
 else
     colorscheme industry
     hi CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
@@ -95,16 +78,6 @@ endif
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,localoptions,tabpages'
 
 imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.python = 
-    \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-
-let g:neocomplete#force_omni_input_patterns.typescript = '[^. \t]\.\w*'
-let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
- 
-let g:vimfiler_as_default_explorer = 1
 
 command! MessCopy call s:messcopy()
 function! s:messcopy()
@@ -124,6 +97,4 @@ if executable('jq')
         execute '%! jq "' . l:arg . '"'
     endfunction
 endif
-
-let g:lexima_enable_basic_rules = 1
 
