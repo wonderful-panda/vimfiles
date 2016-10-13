@@ -113,3 +113,7 @@ if = '''has('gui')'''
 
 [[plugins]]
 repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'digitaltoad/vim-pug'
+
