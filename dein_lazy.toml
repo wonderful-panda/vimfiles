@@ -54,6 +54,9 @@ hook_source = '''
 [[plugins]]
 repo = 'cohama/agit.vim'
 on_cmd = ['Agit', 'AgitFile']
+hook_source = '''
+  let g:agit_stat_width = 256
+'''
 
 [[plugins]]
 repo = 'Blackrush/vim-gocode'
