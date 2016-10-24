@@ -63,5 +63,6 @@ augroup myfiletypesetting
     au FileType help nnoremap <buffer><Esc> :q<CR> 
 
     au FileType javascript setl omnifunc=tern#Complete
+    au FileType typescript NeoCompleteEnable
 augroup END
 
