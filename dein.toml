@@ -14,10 +14,12 @@ hook_post_update = '''
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
-rev = '503e03fdf1485e8f54cbe76d09bf608fcde29107'
 hook_add = '''
     source ~/.vim/settings/unite.vim
 '''
+
+[[plugins]]
+repo = 'Shougo/vimshell.vim'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
