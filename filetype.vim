@@ -55,6 +55,7 @@ augroup myfiletypesetting
     function! s:agit_settings()
         nmap <silent><buffer>x <Plug>(agit-exit)
         unmap <buffer>q
+        cnoremap <expr> <C-h> agit#extract_hash(getline(".")) . " "
     endfunction
     au FileType agit call s:agit_settings()
     au FileType agit_stat call s:agit_settings()
