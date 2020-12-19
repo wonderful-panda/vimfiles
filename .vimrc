@@ -1,44 +1,36 @@
-if has('gui')
-    set encoding=utf-8
-endif
+set encoding=utf8
+
 if has('win32') && has('gui')
-    au GUIEnter * simalt ~x
-    set guifont=Envy_Code_R_for_Powerline:h10:cANSI
-else
-    set guifont=Ricty\ for\ Powerline\ 11
+  au GUIEnter * simalt ~x
+  func s:on_gui_enter()
+    set cmdheight=1
+    colorscheme ayu
+    call lightline#enable()
+  endfunc
+  au VimEnter * call s:on_gui_enter()
+endif
+let g:config_dir = expand('~/.vim/settings') 
+
+let mapleader = ";"
+
+set guifont=HackGenNerd:h12:cSHIFTJIS
+
+exe 'source ' . g:config_dir . '/myconfig.vim'
+
+if filewritable(g:config_dir . '/localenv.vim')
+  call myconfig#source('./localenv.vim')
 endif
 
-if filereadable(fnamemodify('~/.vim/settings/localenv.vim', ':p'))
-    source ~/.vim/settings/localenv.vim
-endif
-if executable('go') && $GOROOT != ''
-    if !executable('gocode')
-        call system('go get github.com/nsf/gocode')
-        call system($GOPATH . '/src/github.com/nsf/gocode/vim/update.sh')
-    endif
-    if !executable('golint')
-        call system('go get github.com/golang/lint/golint')
-    endif
-    set rtp+=$GOROOT/misc/vim
-    exe 'set rtp+=' . $GOPATH . '/src/github.com/golang/lint/misc/vim'
-    if !executable('jvgrep')
-        call system('go get github.com/mattn/jvgrep')
-    endif
-endif
-source ~/.vim/settings/dein.vim
-source ~/.vim/settings/filetype.vim
+call myconfig#source('./dein_settings.vim')
 
 nnoremap J <C-d>
 nnoremap K <C-u>
 
-nnoremap  <C-x> :QuickRun<CR>
-
-inoremap <C-Space> <C-x><C-o>
-
+set shellslash
 set hlsearch
 set number
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set expandtab
 set fileencodings=utf8,cp932
 set laststatus=2
@@ -59,42 +51,13 @@ if !isdirectory(&undodir)
   call mkdir(&undodir)
 endif
 set backupcopy=yes
+set ambiwidth=double
+" Make powerline symbols single width
+call setcellwidths([[0xe0b0, 0xe0bf, 1]])
+set listchars=tab:>\ 
 
-if has('gui')
-    " gvim専用の設定
-    set ambiwidth=auto
-    set listchars=tab:»\ 
-    set list
-
-    colorscheme jellybeans
-    hi Comment gui=NONE
-    hi CursorLine gui=underline guifg=NONE guibg=NONE
-
-else
-    colorscheme industry
-    hi CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
-endif
+hi Comment gui=NONE
 
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,localoptions,tabpages'
 
-imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-command! MessCopy call s:messcopy()
-function! s:messcopy()
-    redir @+>
-    silent messages
-    redir END
-endfunction
-
-if executable('jq')
-    command! -nargs=? Jq call s:Jq(<f-args>)
-    function! s:Jq(...)
-        if 0 == a:0
-            let l:arg = "."
-        else
-            let l:arg = a:1
-        endif
-        execute '%! jq "' . l:arg . '"'
-    endfunction
-endif
 

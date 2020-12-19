@@ -1,127 +1,128 @@
 [[plugins]]
-repo = 'Shougo/dein.vim'
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-hook_post_update = '''
-  if dein#util#_is_windows()
-    let cmd = 'tools\\update-dll-mingw.bat'
-  else
-    let cmd = 'make'
-  endif
-  let g:dein#plugin.build = cmd
-'''
-
-[[plugins]]
-repo = 'Shougo/unite.vim'
+repo = 'Shougo/defx.nvim'
 hook_add = '''
-    source ~/.vim/settings/unite.vim
+  call myconfig#source('defx_settings.vim')
 '''
 
 [[plugins]]
-repo = 'Shougo/vimshell.vim'
+repo = 'roxma/nvim-yarp'
 
 [[plugins]]
-repo = 'Shougo/neomru.vim'
+repo = 'roxma/vim-hug-neovim-rpc'
 
 [[plugins]]
-repo = 'Shougo/unite-outline'
+repo = 'kristijanhusak/defx-git'
 
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
-hook_add = '''
-    if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns = {}
-    endif
-    let g:neocomplete#force_omni_input_patterns.python = 
-        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-
-    let g:neocomplete#force_omni_input_patterns.typescript = '[^. \t]\.\w*'
-    let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
-'''
+repo = 'ryanoasis/vim-devicons'
 
 [[plugins]]
-repo = 'Shougo/vimfiler.vim'
-on_source = '''
-    let g:vimfiler_as_default_explorer = 1
-'''
+repo = 'kristijanhusak/defx-icons'
+
+[[plugins]]
+repo = 'simeji/winresizer'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
 hook_add = '''
-    let g:precious_enable_switchers = {
-    \   "*" : { "setfiletype" : 0 },
-    \   "toml" : { "setfiletype" : 1 },
-    \   "html" : { "setfiletype" : 1 },
-    \   "markdown" : { "setfiletype" : 1 }
-    \}
+  call myconfig#source('denite_settings.vim')
 '''
 
 [[plugins]]
 repo = 'tyru/restart.vim'
 
 [[plugins]]
+repo = 'osyo-manga/vim-precious'
+hook_add = '''
+  let g:precious_enable_switchers = {
+    \   "*": #{ setfiletype: 0 },
+    \   "toml": #{ setfiletype: 1 }
+    \ }
+'''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+
+[[plugins]]
 repo = 'tpope/vim-fugitive'
-
-[[plugins]]
-repo = 'thinca/vim-quickrun.git'
-
-[[plugins]]
-repo = 'osyo-manga/unite-filters-collection'
-
-[[plugins]]
-repo = 'cohama/lexima.vim'
-hook_add = '''
-    let g:lexima_enable_basic_rules = 1
-    call lexima#add_rule({'char': '(', 'at': '\%#\w'})
-    call lexima#add_rule({'char': '[', 'at': '\%#\w'})
-    call lexima#add_rule({'char': '"', 'at': '\%#\w'})
-    call lexima#add_rule({'char': "'", 'at': '\%#\w'})
-    call lexima#add_rule({'char': '`', 'at': '\%#\w'})
-'''
-
-[[plugins]]
-repo = 'editorconfig/editorconfig-vim'
-
-[[plugins]]
-repo = 'vim-scripts/fcitx.vim'
-if = '''!dein#util#_is_windows()'''
-
-[[plugins]]
-repo = 'vim-jp/vital.vim'
-
-[[plugins]]
-repo = 'itchyny/lightline.vim'
-if = '''has('gui')'''
-hook_add = '''
-    let g:lightline = {
-        \   'colorscheme': 'jellybeans',
-        \   'active': {
-        \     'left': [['mode', 'paste'], ['readonly', 'filename', 'modified', 'fugitive']]
-        \   },
-        \   'component': {
-        \     'readonly': '%{&readonly ? "\u2B64" : ""}',
-        \     'fugitive': '%{exists("*fugitive#head") && fugitive#head() != "" ? "\u2B60 " . fugitive#head() : ""}',
-        \   },
-        \   'component_visible_condition': {
-        \     'readonly': '(&readonly)',
-        \     'fugitive': '(exists("*fugitive#head") && fugitive#head() != "")',
-        \   },
-        \   'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-        \   'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
-        \ }
-'''
-
-[[plugins]]
-repo = 'nanotech/jellybeans.vim'
-if = '''has('gui')'''
 
 [[plugins]]
 repo = 'cespare/vim-toml'
 
 [[plugins]]
-repo = 'digitaltoad/vim-pug'
+repo = 'ayu-theme/ayu-vim'
+hook_add = '''
+  colorscheme ayu
+  set background=dark
+'''
 
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  func GitHeadWithSymbol() abort
+    let l:head = FugitiveHead()
+    return l:head == "" ? "" : "\ue0a0" . l:head
+  endf
+  let g:lightline = #{
+    \   colorscheme: 'ayu_mirage',
+    \   active: #{
+    \     left: [['mode', 'paste'], ['readonly', 'filename', 'modified', 'fugitive']]
+    \   },
+    \   component: #{
+    \     readonly: '%{&readonly ? "\ue0a2" : ""}',
+    \   },
+    \   component_function: #{
+    \     fugitive: 'GitHeadWithSymbol'
+    \   },
+    \   component_visible_condition: #{
+    \     readonly: '(&readonly)'
+    \   },
+    \   separator: #{ left: "\ue0b0", right: "\ue0b2" },
+    \   subseparator: #{ left: "\ue0b1", right: "\ue0b3" },
+    \ }
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+  let g:lsp_diagnostics_enabled = 1
+  let g:lsp_diagnostics_float_cursor = 1
+  nmap <silent> <Space>j <plug>(lsp-next-diagnostic)
+  nmap <silent> <Space>k <plug>(lsp-previous-diagnostic)
+  nmap <silent> <Space><Space> <plug>(lsp-hover)
+'''
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+on_ft = ['javascript', 'typescript', 'typescriptreact', 'toml', 'vim']
+hook_add = '''
+  let g:asyncomplete_enable_for_all = 0
+  function! s:prepare_asynccomplete_for_buffer()
+    setlocal signcolumn=yes
+    call asyncomplete#enable_for_buffer()
+  endfunction
+  autocmd FileType javascript,typescript,typescriptreact,toml,vim call s:prepare_asynccomplete_for_buffer()
+
+  inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+  imap <c-space> <Plug>(asyncomplete_force_refresh)
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'cohama/agit.vim'
+hook_source = '''
+  let g:agit_stat_width = 256
+'''
