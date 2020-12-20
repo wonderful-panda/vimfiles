@@ -2,12 +2,6 @@ set encoding=utf8
 
 if has('win32') && has('gui')
   au GUIEnter * simalt ~x
-  func! s:on_gui_enter()
-    set cmdheight=1
-    colorscheme ayu
-    call lightline#enable()
-  endfunc
-  au VimEnter * call s:on_gui_enter()
 endif
 let s:config_dir = expand('<sfile>:p:h') 
 
