@@ -3,8 +3,9 @@ if &compatible
 endif
 
 let s:script = expand('<sfile>:p')
-let s:toml = g:config_dir . '/dein.toml'
-let s:dein_dir = expand(g:config_dir . '/.dein')
+let s:script_dir = expand('<sfile>:p:h')
+let s:toml = s:script_dir . '/dein.toml'
+let s:dein_dir = expand(s:script_dir . '/.dein')
 
 let s:dein_repo_dir = expand(s:dein_dir . '/repos/github.com/Shougo/dein.vim')
 

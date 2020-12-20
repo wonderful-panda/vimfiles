@@ -11,6 +11,7 @@ call defx#custom#option('_', #{
 call defx#custom#column('git', 'raw_mode', 1)
 
 nnoremap <silent> <leader>d :Defx<CR>
+nnoremap <silent> <leader>D :exe "Defx " . expand("%:h")<CR>
 
 autocmd FileType defx call s:defx_my_settings()
 
@@ -39,9 +40,6 @@ function! s:defx_my_settings() abort
   \ defx#do_action('new_file')
   nnoremap <silent><buffer><expr> M
   \ defx#do_action('new_multiple_files')
-  nnoremap <silent><buffer><expr> C
-  \ defx#do_action('toggle_columns',
-  \                'mark:indent:icon:filename:type:size:time')
   nnoremap <silent><buffer><expr> S
   \ defx#do_action('toggle_sort', 'time')
   nnoremap <silent><buffer><expr> d
@@ -62,7 +60,7 @@ function! s:defx_my_settings() abort
   \ defx#do_action('cd', ['..'])
   nnoremap <silent><buffer><expr> ~
   \ defx#do_action('cd')
-  nnoremap <silent><buffer><expr> qq
+  nnoremap <silent><buffer><expr> <Esc><Esc>
   \ defx#do_action('quit')
   nnoremap <silent><buffer><expr> <Space>
   \ defx#do_action('toggle_select') . 'j'
@@ -79,5 +77,4 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> cd
   \ defx#do_action('change_vim_cwd')
 endfunction
-
 

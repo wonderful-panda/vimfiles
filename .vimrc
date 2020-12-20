@@ -2,26 +2,28 @@ set encoding=utf8
 
 if has('win32') && has('gui')
   au GUIEnter * simalt ~x
-  func s:on_gui_enter()
+  func! s:on_gui_enter()
     set cmdheight=1
     colorscheme ayu
     call lightline#enable()
   endfunc
   au VimEnter * call s:on_gui_enter()
 endif
-let g:config_dir = expand('~/.vim/settings') 
+let s:config_dir = expand('<sfile>:p:h') 
+
+func! SourceFromConfigDir(relpath) abort
+  exe 'source ' . s:config_dir . '/' . a:relpath
+endfunc
 
 let mapleader = ";"
 
 set guifont=HackGenNerd:h12:cSHIFTJIS
 
-exe 'source ' . g:config_dir . '/myconfig.vim'
-
-if filewritable(g:config_dir . '/localenv.vim')
-  call myconfig#source('./localenv.vim')
+if filewritable(s:config_dir . '/localenv.vim')
+  call SourceFromConfigDir('./localenv.vim')
 endif
 
-call myconfig#source('./dein_settings.vim')
+call SourceFromConfigDir('./dein_settings.vim')
 
 nnoremap J <C-d>
 nnoremap K <C-u>
@@ -43,7 +45,6 @@ set iminsert=0
 set imsearch=-1
 set shellslash
 set cursorline
-set cmdheight=1
 set wildmenu
 set wildmode=longest:full,full
 set undodir=~/.vim/undo

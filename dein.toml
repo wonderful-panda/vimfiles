@@ -1,7 +1,7 @@
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add = '''
-  call myconfig#source('defx_settings.vim')
+  call SourceFromConfigDir('defx_settings.vim')
 '''
 
 [[plugins]]
@@ -25,7 +25,7 @@ repo = 'simeji/winresizer'
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 hook_add = '''
-  call myconfig#source('denite_settings.vim')
+  call SourceFromConfigDir('denite_settings.vim')
 '''
 
 [[plugins]]
