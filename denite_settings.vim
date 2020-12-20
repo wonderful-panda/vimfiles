@@ -39,7 +39,7 @@ function! s:denite_filter_my_settings() abort
 endfunction
 
 call denite#custom#var('file/rec', 'command',
-\ ['rg', '--files', '--glob', '!.git', '--color', 'never'])
+\ ['rg', '--files', '--hidden', '--glob', '!.git', '--color', 'never'])
 
 " Change default action.
 call denite#custom#kind('file', 'default_action', 'split')
