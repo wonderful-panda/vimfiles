@@ -30,6 +30,8 @@ function! s:defx_my_settings() abort
   \ defx#do_action('open')
   nnoremap <silent><buffer><expr> L
   \ defx#do_action('open', 'rightbelow vsplit')
+  nnoremap <silent><buffer><expr> t
+  \ defx#do_action('open', 'tabnew')
   nnoremap <silent><buffer><expr> P
   \ defx#do_action('preview')
   nnoremap <silent><buffer><expr> o
@@ -62,7 +64,7 @@ function! s:defx_my_settings() abort
   \ defx#do_action('cd')
   nnoremap <silent><buffer><expr> <Esc><Esc>
   \ defx#do_action('quit')
-  nnoremap <silent><buffer><expr> <Space>
+  nnoremap <silent><buffer><expr> a
   \ defx#do_action('toggle_select') . 'j'
   nnoremap <silent><buffer><expr> *
   \ defx#do_action('toggle_select_all')
