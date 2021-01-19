@@ -38,6 +38,7 @@ set nobackup
 set iminsert=0
 set imsearch=-1
 set shellslash
+set autoindent
 set cursorline
 set wildmenu
 set wildmode=longest:full,full
