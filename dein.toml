@@ -20,6 +20,9 @@ repo = 'ryanoasis/vim-devicons'
 repo = 'kristijanhusak/defx-icons'
 
 [[plugins]]
+repo = 't9md/vim-choosewin'
+
+[[plugins]]
 repo = 'simeji/winresizer'
 
 [[plugins]]

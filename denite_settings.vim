@@ -21,6 +21,16 @@ nmap <silent> <Leader>gp :DeniteProjectDir grep -buffer-name=grep<CR>
 function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <CR>
   \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> C
+  \ denite#do_map('choose_action')
+  nnoremap <silent><buffer><expr> c
+  \ denite#do_map('do_action', 'choosewin')
+  nnoremap <silent><buffer><expr> t
+  \ denite#do_map('do_action', 'tabopen')
+  nnoremap <silent><buffer><expr> v
+  \ denite#do_map('do_action', 'vsplit')
+  nnoremap <silent><buffer><expr> s
+  \ denite#do_map('do_action', 'split')
   nnoremap <silent><buffer><expr> d
   \ denite#do_map('do_action', 'delete')
   nnoremap <silent><buffer><expr> p
@@ -29,7 +39,7 @@ function! s:denite_my_settings() abort
   \ denite#do_map('quit')
   nnoremap <silent><buffer><expr> i
   \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
+  nnoremap <silent><buffer><expr> a
   \ denite#do_map('toggle_select').'j'
 endfunction
 
@@ -66,3 +76,23 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
 call denite#custom#alias('source', 'file/old/proj', 'file/old')
 call denite#custom#source(
   \ 'file/old/proj', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
+
+function! denite_settings#choosewin(context) abort
+  let l:winnum = winnr('$')
+  let l:windows = []
+  let l:winno = 1
+  while l:winno <= l:winnum
+    if getwinvar(l:winno, '&buftype') == ''
+      call insert(l:windows, l:winno)
+    endif
+    let l:winno = l:winno + 1
+  endwhile
+  let l:ret = choosewin#start(l:windows, #{ auto_choose: 1, hook_enabled: 0 })
+  if !empty(l:ret)
+    execute 'edit! ' . a:context.targets[0].action__path
+  endif
+endfunction
+
+call denite#custom#action('file', 'choosewin', 'denite_settings#choosewin')
+
+

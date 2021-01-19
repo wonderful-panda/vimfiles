@@ -19,7 +19,7 @@ function! s:defx_my_settings() abort
 
   " Define mappings
   nnoremap <silent><buffer><expr> <CR>
-  \ defx#is_directory() ? defx#do_action('open_or_close_tree') : defx#do_action('drop')
+  \ defx#is_directory() ? defx#do_action('open_or_close_tree') : defx#do_action('open', 'choose')
   nnoremap <silent><buffer><expr> c
   \ defx#do_action('copy')
   nnoremap <silent><buffer><expr> m
