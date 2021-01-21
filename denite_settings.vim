@@ -19,6 +19,8 @@ nmap <silent> <Leader>gb :DeniteBufferDir grep -buffer-name=grep<CR>
 nmap <silent> <Leader>gp :DeniteProjectDir grep -buffer-name=grep<CR>
 
 function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> r
+  \ denite#do_map('redraw')
   nnoremap <silent><buffer><expr> <CR>
   \ denite#do_map('do_action')
   nnoremap <silent><buffer><expr> C
