@@ -96,6 +96,11 @@ repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
   let g:lsp_diagnostics_enabled = 1
   let g:lsp_diagnostics_float_cursor = 1
+  nmap <silent> <F12> <plug>(lsp-definition)
+  nmap <silent> <C-F12> <plug>(lsp-peek-definition)
+  nmap <silent> <Space>a <plug>(lsp-code-action)
+  imap <silent> <C-a> <plug>(lsp-code-action)
+  nmap <silent> <Space>a <plug>(lsp-code-action)
   nmap <silent> <Space>j <plug>(lsp-next-diagnostic)
   nmap <silent> <Space>k <plug>(lsp-previous-diagnostic)
   nmap <silent> <Space><Space> <plug>(lsp-hover)
@@ -129,3 +134,11 @@ repo = 'cohama/agit.vim'
 hook_source = '''
   let g:agit_stat_width = 256
 '''
+
+[[plugins]]
+repo = 'styled-components/vim-styled-components'
+on_ft = ['javascript', 'typescript', 'typescriptreact']
+
+[[plugins]]
+repo = 'prettier/vim-prettier'
+build = 'yarn install'
