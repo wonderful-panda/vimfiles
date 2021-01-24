@@ -11,8 +11,6 @@ endfunc
 
 let mapleader = ";"
 
-set guifont=HackGenNerd:h12:cSHIFTJIS
-
 if filewritable(s:config_dir . '/localenv.vim')
   call SourceFromConfigDir('./localenv.vim')
 endif
@@ -47,13 +45,17 @@ if !isdirectory(&undodir)
   call mkdir(&undodir)
 endif
 set backupcopy=yes
-set ambiwidth=double
-" Make powerline symbols single width
-call setcellwidths([[0xe0b0, 0xe0bf, 1]])
 set listchars=tab:>\ 
 
 hi Comment gui=NONE
 
-let g:restart_sessionoptions = 'blank,buffers,curdir,folds,localoptions,tabpages'
-
+if has("nvim")
+  set ambiwidth=single
+else
+  set ambiwidth=double
+  " Make powerline symbols single width
+  call setcellwidths([[0xe0b0, 0xe0bf, 1]])
+  set guifont=HackGenNerd:h12:cSHIFTJIS
+  let g:restart_sessionoptions = 'blank,buffers,curdir,folds,localoptions,tabpages'
+endif
 

@@ -1,6 +1,6 @@
 call denite#custom#option('_', #{
   \   prompt: '>',
-  \   split: 'horizontal',
+  \   split: has('nvim') ? 'floating' : 'horizontal',
   \ })
 
 call denite#custom#option('grep', #{
@@ -19,6 +19,8 @@ nmap <silent> <Leader>gb :DeniteBufferDir grep -buffer-name=grep<CR>
 nmap <silent> <Leader>gp :DeniteProjectDir grep -buffer-name=grep<CR>
 
 function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> D
+  \ denite#do_map('print_messages')
   nnoremap <silent><buffer><expr> r
   \ denite#do_map('redraw')
   nnoremap <silent><buffer><expr> <CR>
@@ -48,6 +50,7 @@ endfunction
 autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
   imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+  nmap <silent><buffer> <Esc> <Plug>(denite_filter_quit)
 endfunction
 
 call denite#custom#var('file/rec', 'command',
@@ -79,13 +82,16 @@ call denite#custom#alias('source', 'file/old/proj', 'file/old')
 call denite#custom#source(
   \ 'file/old/proj', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
 
+call denite#custom#source(
+  \ 'file/rec/git,file/old/proj', 'converters', ['devicons_denite_converter'])
+
 function! denite_settings#choosewin(context) abort
   let l:winnum = winnr('$')
   let l:windows = []
   let l:winno = 1
   while l:winno <= l:winnum
     if getwinvar(l:winno, '&buftype') == ''
-      call insert(l:windows, l:winno)
+      call add(l:windows, l:winno)
     endif
     let l:winno = l:winno + 1
   endwhile

@@ -6,15 +6,17 @@ hook_add = '''
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
+if = '!has("nvim")'
 
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
+if = '!has("nvim")'
 
 [[plugins]]
 repo = 'kristijanhusak/defx-git'
 
 [[plugins]]
-repo = 'ryanoasis/vim-devicons'
+repo = 'wonderful-panda/vim-devicons'
 
 [[plugins]]
 repo = 'kristijanhusak/defx-icons'
@@ -27,12 +29,10 @@ repo = 'simeji/winresizer'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
-hook_add = '''
-  call SourceFromConfigDir('denite_settings.vim')
-'''
 
 [[plugins]]
 repo = 'tyru/restart.vim'
+if = '!has("nvim")'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
@@ -45,6 +45,12 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+hook_add = '''
+  call SourceFromConfigDir('denite_settings.vim')
+'''
+
+[[plugins]]
+repo = 'neoclide/denite-git'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -70,7 +76,7 @@ repo = 'itchyny/lightline.vim'
 hook_add = '''
   func GitHeadWithSymbol() abort
     let l:head = FugitiveHead()
-    return l:head == "" ? "" : "\ue0a0" . l:head
+    return l:head == "" ? "" : "\ue0a0 " . l:head
   endf
   let g:lightline = #{
     \   colorscheme: 'ayu_mirage',
@@ -100,7 +106,6 @@ hook_add = '''
   nmap <silent> <C-F12> <plug>(lsp-peek-definition)
   nmap <silent> <Space>a <plug>(lsp-code-action)
   imap <silent> <C-a> <plug>(lsp-code-action)
-  nmap <silent> <Space>a <plug>(lsp-code-action)
   nmap <silent> <Space>j <plug>(lsp-next-diagnostic)
   nmap <silent> <Space>k <plug>(lsp-previous-diagnostic)
   nmap <silent> <Space><Space> <plug>(lsp-hover)
