@@ -10,16 +10,13 @@ call defx#custom#option('_', #{
 
 call defx#custom#column('git', 'raw_mode', 1)
 
-nnoremap <silent> <leader>d :Defx<CR>
-nnoremap <silent> <leader>D :exe "Defx " . expand("%:h")<CR>
-
 autocmd FileType defx call s:defx_my_settings()
 
 function! s:defx_my_settings() abort
 
   " Define mappings
   nnoremap <silent><buffer><expr> <CR>
-  \ defx#is_directory() ? defx#do_action('open_or_close_tree') : defx#do_action('open', 'choose')
+  \ defx#is_directory() ? defx#do_action('open_tree', 'toggle') : defx#do_action('open', 'choose')
   nnoremap <silent><buffer><expr> c
   \ defx#do_action('copy')
   nnoremap <silent><buffer><expr> m
@@ -27,9 +24,13 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> p
   \ defx#do_action('paste')
   nnoremap <silent><buffer><expr> l
-  \ defx#do_action('open')
+  \ defx#is_directory() ?  defx#do_action('open_tree') :  defx#do_action('open', 'choose')
   nnoremap <silent><buffer><expr> L
+  \ defx#is_directory() ?  defx#do_action('open') :  defx#do_action('open', 'drop')
+  nnoremap <silent><buffer><expr> v
   \ defx#do_action('open', 'rightbelow vsplit')
+  nnoremap <silent><buffer><expr> s
+  \ defx#do_action('open', 'rightbelow split')
   nnoremap <silent><buffer><expr> t
   \ defx#do_action('open', 'tabnew')
   nnoremap <silent><buffer><expr> P
@@ -59,6 +60,12 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> ;
   \ defx#do_action('repeat')
   nnoremap <silent><buffer><expr> h
+  \ line(".") == 1
+  \ ? defx#do_action('cd', ['..'])
+  \ : defx#is_opened_tree()
+  \   ? defx#do_action('open_tree', 'toggle')
+  \   : defx#do_action('search', fnamemodify(defx#get_candidate().action__path, ':h'))
+  nnoremap <silent><buffer><expr> H
   \ defx#do_action('cd', ['..'])
   nnoremap <silent><buffer><expr> ~
   \ defx#do_action('cd')

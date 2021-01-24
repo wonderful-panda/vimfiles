@@ -10,14 +10,6 @@ call denite#custom#option('grep', #{
 
 autocmd FileType denite call s:denite_my_settings()
 
-nmap <silent> <Leader>f :Denite file/rec<CR>
-nmap <silent> <Leader>F :Denite file/rec/git<CR>
-nmap <silent> <Leader>m :Denite file/old/proj<CR>
-nmap <silent> <Leader>M :Denite file/old<CR>
-nmap <silent> <Leader>gc :Denite grep -buffer-name=grep<CR>
-nmap <silent> <Leader>gb :DeniteBufferDir grep -buffer-name=grep<CR>
-nmap <silent> <Leader>gp :DeniteProjectDir grep -buffer-name=grep<CR>
-
 function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> D
   \ denite#do_map('print_messages')

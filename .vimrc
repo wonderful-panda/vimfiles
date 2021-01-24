@@ -9,16 +9,11 @@ func! SourceFromConfigDir(relpath) abort
   exe 'source ' . s:config_dir . '/' . a:relpath
 endfunc
 
-let mapleader = ";"
-
 if filewritable(s:config_dir . '/localenv.vim')
   call SourceFromConfigDir('./localenv.vim')
 endif
 
 call SourceFromConfigDir('./dein_settings.vim')
-
-nnoremap J <C-d>
-nnoremap K <C-u>
 
 set shellslash
 set hlsearch
@@ -59,3 +54,30 @@ else
   let g:restart_sessionoptions = 'blank,buffers,curdir,folds,localoptions,tabpages'
 endif
 
+" MAPPINGS
+let mapleader = ";"
+
+nnoremap <silent> <Leader>f :Denite file/rec<CR>
+nnoremap <silent> <Leader>F :Denite file/rec/git<CR>
+nnoremap <silent> <Leader>m :Denite file/old/proj<CR>
+nnoremap <silent> <Leader>M :Denite file/old<CR>
+nnoremap <silent> <Leader>gc :Denite grep -buffer-name=grep<CR>
+nnoremap <silent> <Leader>gb :DeniteBufferDir grep -buffer-name=grep<CR>
+nnoremap <silent> <Leader>gp :DeniteProjectDir grep -buffer-name=grep<CR>
+
+nnoremap <silent> <leader>da :Defx<CR>
+nnoremap <silent> <leader>df :exe "Defx " . expand("%:h")<CR>
+nnoremap <silent> <leader>dr :call defx#redraw()<CR>
+
+nmap <silent> <F12> <plug>(lsp-definition)
+nmap <silent> <C-F12> <plug>(lsp-peek-definition)
+nmap <silent> <Space>a <plug>(lsp-code-action)
+imap <silent> <C-a> <plug>(lsp-code-action)
+nmap <silent> <Space>j <plug>(lsp-next-diagnostic)
+nmap <silent> <Space>k <plug>(lsp-previous-diagnostic)
+nmap <silent> <Space><Space> <plug>(lsp-hover)
+
+nnoremap J <C-d>
+nnoremap K <C-u>
+
+tnoremap <Esc> <C-\><C-n>
