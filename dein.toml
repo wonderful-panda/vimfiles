@@ -109,14 +109,14 @@ repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete.vim'
-on_ft = ['javascript', 'typescript', 'typescriptreact', 'toml', 'vim']
+on_ft = ['javascript', 'typescript', 'typescriptreact', 'toml', 'vim', 'go', 'rust']
 hook_add = '''
   let g:asyncomplete_enable_for_all = 0
   function! s:prepare_asynccomplete_for_buffer()
     setlocal signcolumn=yes
     call asyncomplete#enable_for_buffer()
   endfunction
-  autocmd FileType javascript,typescript,typescriptreact,toml,vim call s:prepare_asynccomplete_for_buffer()
+  autocmd FileType javascript,typescript,typescriptreact,toml,vim,go,rust call s:prepare_asynccomplete_for_buffer()
 
   inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -136,7 +136,15 @@ hook_source = '''
 [[plugins]]
 repo = 'styled-components/vim-styled-components'
 on_ft = ['javascript', 'typescript', 'typescriptreact']
+rev = 'develop'
 
 [[plugins]]
 repo = 'prettier/vim-prettier'
 build = 'yarn install'
+
+[[plugins]]
+repo = 'MaxMEllon/vim-jsx-pretty'
+
+[[plugins]]
+repo = 'mattn/vim-goimports'
+
